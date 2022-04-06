@@ -1,5 +1,12 @@
 let db;
-const request = indexedDB.open('BudgetBuddy', 1);
+const indexedDB =
+  window.indexedDB ||
+  window.mozIndexedDB ||
+  window.webkitIndexedDB ||
+  window.msIndexedDB ||
+  window.shimIndexedDB;
+  
+const request = indexedDB.open('budget', 1);
 
 request.onupgradeneeded = function(event){
     const db = event.target.result;
